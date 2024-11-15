@@ -1,6 +1,5 @@
 public class Metodos {
     public void burbujaAjuste(int[] arreglo) {
-        long inicio= System.currentTimeMillis();
         int n = arreglo.length;
         boolean intercambio;
         for (int i = 0; i < n - 1; i++) {
@@ -15,12 +14,9 @@ public class Metodos {
             }
             if (!intercambio) break;
         }
-        long fin = System.currentTimeMillis();
-        System.out.println("Tiempo de ejecución Burbuja Ajuste: " + (fin - inicio) + " ms");
     }
 
     public void insercion(int[] arreglo) {
-        long inicio= System.currentTimeMillis();
         for (int j = 1; j < arreglo.length; j++) {
             int key = arreglo[j];
             int i = j - 1;
@@ -30,12 +26,9 @@ public class Metodos {
             }
             arreglo[i + 1] = key;
         }
-        long fin = System.currentTimeMillis();
-        System.out.println("Tiempo de ejecución Insercion: " + (fin - inicio) + " ms");
     }
 
     public void seleccion(int[] arreglo) {
-        long inicio= System.currentTimeMillis();
         for (int i = 0; i < arreglo.length - 1; i++) {
             int indiceMinimo = i;
             for (int j = i + 1; j < arreglo.length; j++) {
@@ -47,8 +40,6 @@ public class Metodos {
             arreglo[indiceMinimo] = arreglo[i];
             arreglo[i] = temp;
         }
-        long fin = System.currentTimeMillis();
-        System.out.println("Tiempo de ejecución Seleccion: " + (fin - inicio) + " ms");
     }
     
     public int busquedaBinaria(int[] arreglo, int valor) {

@@ -55,55 +55,51 @@ class Menu {
     }
 
     public static void ordenarArreglos() {
-        System.out.println("\tOrdenando arreglo10 con los tres métodos:");
-        metodos.burbujaAjuste(arreglo10);
-        metodos.insercion(arreglo10);
-        metodos.seleccion(arreglo10);
-        System.out.println("\nArreglo10 Ordenado: ");
-        System.out.print("[");
-        for (int elem : arreglo10) {
-            System.out.print(elem + ", ");
-        }
-        System.out.print("]\n");
-        
-        System.out.println();
+        System.out.println("\tMetodo de Burbuja Ajuste:");
+        ordenarConTiempo(arreglo10, "Arreglo10");
 
         System.out.println("\tOrdenando arreglo100 con los tres métodos:");
-        metodos.burbujaAjuste(arreglo100);
-        metodos.insercion(arreglo100);
-        metodos.seleccion(arreglo100);
+        ordenarConTiempo(arreglo100, "Arreglo100");
 
-        System.out.println();
-        
         System.out.println("\tOrdenando arreglo1000 con los tres métodos:");
-        metodos.burbujaAjuste(arreglo1000);
-        metodos.insercion(arreglo1000);
-        metodos.seleccion(arreglo1000);
-
-        System.out.println();
+        ordenarConTiempo(arreglo1000, "Arreglo1000");
 
         System.out.println("\tOrdenando arreglo5000 con los tres métodos:");
-        metodos.burbujaAjuste(arreglo5000);
-        metodos.insercion(arreglo5000);
-        metodos.seleccion(arreglo5000);
-
-        System.out.println();
+        ordenarConTiempo(arreglo5000, "Arreglo5000");
 
         System.out.println("\tOrdenando arreglo10000 con los tres métodos:");
-        metodos.burbujaAjuste(arreglo10000);
-        metodos.insercion(arreglo10000);
-        metodos.seleccion(arreglo10000);
-
-        System.out.println();
+        ordenarConTiempo(arreglo10000, "Arreglo10000");
 
         System.out.println("\tOrdenando arreglo30000 con los tres métodos:");
-        metodos.burbujaAjuste(arreglo30000);
-        metodos.insercion(arreglo30000);
-        metodos.seleccion(arreglo30000);
-
-        System.out.println();
+        ordenarConTiempo(arreglo30000, "Arreglo30000");
 
         System.out.println("Arreglos ordenados.");
+    }
+
+    private static void ordenarConTiempo(int[] arreglo, String nombreArreglo) {
+        long start, end;
+        double tiempoSegundos;
+
+        // Burbuja Ajuste
+        start = System.nanoTime();
+        metodos.burbujaAjuste(arreglo);
+        end = System.nanoTime();
+        tiempoSegundos = (end - start) / 1_000_000_000.0;
+        System.out.printf("%s Burbuja Ajuste tiempo: %.9f s\n", nombreArreglo, tiempoSegundos);
+
+        // Inserción
+        start = System.nanoTime();
+        metodos.insercion(arreglo);
+        end = System.nanoTime();
+        tiempoSegundos = (end - start) / 1_000_000_000.0;
+        System.out.printf("%s Inserción tiempo: %.9f s\n", nombreArreglo, tiempoSegundos);
+
+        // Selección
+        start = System.nanoTime();
+        metodos.seleccion(arreglo);
+        end = System.nanoTime();
+        tiempoSegundos = (end - start) / 1_000_000_000.0;
+        System.out.printf("%s Selección tiempo: %.9f s\n", nombreArreglo, tiempoSegundos);
     }
 
     public static void buscarValor(int valor) {
@@ -128,7 +124,7 @@ class Menu {
             System.out.println("Valor no encontrado en Búsqueda Binaria Normal.");
         }
         long end = System.nanoTime();
-        double tiempoNormalSegundos = (end - start) / 1_000_000_000.0; // Convertir a segundos
+        double tiempoNormalSegundos = (end - start) / 1_000_000_000.0;
         System.out.printf("Tiempo de ejecución Búsqueda Binaria Normal: %.9f s\n", tiempoNormalSegundos);
     
         // Búsqueda binaria recursiva
@@ -140,13 +136,11 @@ class Menu {
             System.out.println("Valor no encontrado en Búsqueda Binaria Recursiva.");
         }
         long fin = System.nanoTime();
-        double tiempoRecursivoSegundos = (fin - inicio) / 1_000_000_000.0; // Convertir a segundos
+        double tiempoRecursivoSegundos = (fin - inicio) / 1_000_000_000.0;
         System.out.printf("Tiempo de ejecución Búsqueda Binaria Recursiva: %.9f s\n", tiempoRecursivoSegundos);
     
         System.out.println();
     }
-    
-    
 
     public void mostrarMenu() {
         Scanner scanner = new Scanner(System.in);
